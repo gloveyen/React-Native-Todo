@@ -1,16 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState, useRef } from 'react';
 import { ImageBackground ,StyleSheet, Text, View, ScrollView, Animated } from 'react-native';
-import BlurShadowView from './components/BlurShadowView';
 import MissionSlide from './screens/MissionSlide';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 import firebase from './modules/firebase';
 import { useDimensions } from '@react-native-community/hooks';
 import { SCREEN_INFO } from './utils';
-import moment from 'moment';
 import Icon from 'react-native-vector-icons/AntDesign';
 import MissionAdd from './screens/MissionAdd';
+import MissionItem from './components/MissionItem';
 
 const AnimatedMissionAdd = ({ addButtonPress, animatedValue }) => {
 
@@ -104,13 +103,8 @@ export default function App() {
     addButtonPress();
   }
 
-  const renderMissions = missionList.length ? missionList.map(({ id ,title, desc, date, time })=>(
-    <BlurShadowView key={id}>
-      <Text onPress={()=>{handlePress(id)}}>
-        <Text style={{fontSize: 20, fontWeight: 'bold', lineHeight: 36}}>{title + "\n"}</Text>
-        <Text><Text style={{color: 'tomato'}}>提醒事項</Text> - {moment(time).format('yyyy/M/DD')}</Text>
-      </Text>
-    </BlurShadowView>
+  const renderMissions = missionList.length ? missionList.map((missionData)=>(
+    <MissionItem key={missionData.id} missionData={missionData} handlePress={handlePress} />
   )): (null);
 
   if (!fontsLoaded) return <AppLoading />;
