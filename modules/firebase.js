@@ -11,12 +11,6 @@ import "firebase/firestore";
 
 // Initialize Firebase
 const firebaseConfig = {
-  // apiKey: "AIzaSyB59IJYjxzFJ8jFzaGp_FEpv3_BfOJaqSE",
-  // authDomain: "reactnativetodo-40f18.firebaseapp.com",
-  // projectId: "reactnativetodo-40f18",
-  // storageBucket: "reactnativetodo-40f18.appspot.com",
-  // messagingSenderId: "502549600890",
-  // appId: "1:502549600890:web:fd08962ad998c5335879c3"
   apiKey: env.API_KEY,
   authDomain: env.AUTH_DOMAIN,
   projectId: env.PROJECT_ID,
